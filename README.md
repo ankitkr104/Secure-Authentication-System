@@ -55,7 +55,7 @@ The second implementation utilizes Appwrite as a fully managed Backend-as-a-Serv
    ```
 4. Open the frontend in your browser.
 
-## Architecture & Security Decisions
+### Architecture & Security Decisions
 * **Authentication**: Appwrite natively hashes passwords (Argon2) and handles rate-limiting internally. We utilize `createEmailSession` to establish secure sessions.
 * **Server-side Invalidation**: The `logout()` function securely terminates the specific session on the server via `account.deleteSession('current')`.
 * **File Isolation**: File uploads leverage Appwrite's **Document Level Security**. When a file is uploaded, permissions are explicitly granted *only* to the uploading user's Role (`Appwrite.Role.user(userId)`). This strictly guarantees isolated file access at the database level.
